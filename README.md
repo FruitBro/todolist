@@ -67,5 +67,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+React ：英文原意（响应）
 
 React 中的响应式设计思想和事件绑定
+
+思路：
+    1.输入框的值
+    2，list的值 push
+    3. map list中的值
