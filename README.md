@@ -75,3 +75,26 @@ React 中的响应式设计思想和事件绑定
     1.输入框的值
     2，list的值 push
     3. map list中的值
+
+二、
+
+注释的写法
+ {/* 下面是一个input框 */}
+
+让我们的某些标签不被转义，但存在xss风险
+ dangerouslySetInnerHTML={{__html: item}}
+
+
+  <label htmlFor="insertArea">输入内容</label>
+   <input id="insertArea"/>
+ html中label的作用一般是扩大点击区域，与input的id进行绑定，label要用htmlFor,防止与for循环冲突
+
+ 三、 拆分组件与组件之间的传值
+
+ 父组件向子组件传值： 通过属性的形式，既可以传递数据，也可以传递方法
+ 子组件接收父组件的值：props
+ 子组件调用父组件方法改变父组件的数据：this.props.deleteItem，deleteItem函数一定要绑定this,对父组件的数据进行改变
+ 
+ TodoList代码优化
+
+ 
