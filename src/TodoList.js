@@ -28,52 +28,48 @@ class TodoList extends Component {
           <button onClick={this.handleBtnClick}>提交</button>
         </div>
         <ul>
-          {this.state.list.map((item, index) => {
-            return (
-              <div>
-                <TodoItem
-                  content={item}
-                  index={index}
-                  deleteItem={this.handleItemDelete}
-                />
-
-                {/* <li 
-                    key={index} 
-                    onClick={this.handleItemDelete.bind(this, index)}
-                    dangerouslySetInnerHTML={{__html: item}}
-                    >
-                </li> */}
-              </div>
-            );
-          })}
+          {this.getTodoItem()}
         </ul>
       </Fragment>
     );
   }
 
+  getTodoItem () {
+    return this.state.list.map((item, index) => {
+      return (
+          <TodoItem
+            key={index}
+            content={item}
+            index={index}
+            deleteItem={this.handleItemDelete}
+          />
+      )
+    })
+
+  }
+
   handleInputChange(e) {
-    this.setState({
-      inputValue: e.target.value
-    });
+    const value = e.target.value
+    this.setState(() => ({
+        inputValue: value
+    }))
   }
 
   handleBtnClick() {
-    this.setState({
-      list: [...this.state.list, this.state.inputValue],
+    // prevState 代表修改之前的数据
+    this.setState((prevState)=>({
+      list: [...prevState.list, prevState.inputValue],
       inputValue: ""
-    });
+    }))
   }
 
   handleItemDelete(index) {
     // immutable
-    // state 不允许我们做任何改变
-    console.log(index);
-    const list = [...this.state.list]; // 先拷贝出来
-    list.splice(index, 1);
-
-    this.setState({
-      list: list
-    });
+    this.setState((prevState) => {
+      const list = [...prevState.list]
+      list.splice(index, 1)
+      return {list}
+    })
   }
 }
 
