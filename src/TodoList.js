@@ -3,7 +3,8 @@ import TodoItem from "./TodoItem";
 import "./style.css";
 class TodoList extends Component {
   constructor(props) {
-    super(props);
+    super(props)
+    //  当组件的state或者props发生改变的时候，render函数就会重新执行
     this.state = {
       inputValue: "",
       list: []

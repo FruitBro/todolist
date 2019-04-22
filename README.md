@@ -89,7 +89,7 @@ React 中的响应式设计思想和事件绑定
    <input id="insertArea"/>
  html中label的作用一般是扩大点击区域，与input的id进行绑定，label要用htmlFor,防止与for循环冲突
 
- 三、 拆分组件与组件之间的传值
+ 三、 拆分组件与组件之间的传值(重点)
 
  父组件向子组件传值： 通过属性的形式，既可以传递数据，也可以传递方法
  子组件接收父组件的值：props
@@ -121,3 +121,65 @@ setState可以传入回调函数，prevState代表this.state修改之前的数�
 5. 是视图层框架：多层传递数据的时候会异常复杂，需要借助redux、flux等来辅助开发
 
 6. 函数式编程：写的都是一个个函数，维护起来比较容易。面向测试的开发流程，输入值看输出是否符合预期，给测试带来非常大的便捷性,更容易前端自动化测试。
+
+六、PropTypes与DefalutProps的应用
+
+参数类型做校验 定义参数默认值
+
+React最佳学习方式：读英文文档 https://reactjs.org/docs/typechecking-with-proptypes.html
+
+七、props,state与render函数的关系
+
+当组件的state或者props发生改变的时候，render函数就会重新执行
+当父组件的render函数被运行时，他的自附件的render都将被重新运行一次
+1.复杂页面，数据变更导致频繁的render，是否占用太多资源？2.如何控制数据变更后的render时机？
+当使用immutable，并且配合pureComponent时，数据不变，render就不会执行
+
+八、React中的虚拟DOM
+
+1. state 数据
+2. JSX 模板
+3. 数据 + 模板 结合，生成真实的DOM，并显示
+4. state 发生改变
+5. 数据 + 模板 结合，生成真实的DOM，替换原始的DOM（自己模拟实现）
+缺陷：第一次生成了完整的DOM片段，第二次生成了完整的DOM片段，第二次的DOM替换第一次的DOM，非常耗费性能
+
+DOM(DocumentFragment)
+
+优化
+1. state 数据
+2. JSX 模板
+3. 数据 + 模板 生成虚拟DOM(虚拟DOM就是一个JS对象，用它来描述真实DOM)
+<div id="abc"><span>hello world<span></div>用JS对象来表示
+['div', {id: 'abc'}, ['span', {}, 'hello world']] 
+
+4. 用虚拟DOM的结构生成真实的DOM，并显示
+5. state 发生变化
+6. 数据 + 模板 生成新的虚拟DOM（极大的提升了性能）
+['div', {id: 'abc'}, ['span', {}, 'bye bye']]
+7. 比较原始虚拟DOM和新的虚拟DOM的区别，找到区别是span中的内容（极大的提升了性能）
+8. 然后直接操作DOM，改变span中的内容
+
+用js生成一个js对象，它的性能损耗是极小的，但用js生成一个DOM元素，代价极高
+原因：js创建一个js对象很简单，但js创建一个DOM对象，需要调用web application的API,性能损耗比较大
+
+JSX先被转为JS对象，再变成真实的DOM
+JSX --> createElment -->虚拟DOM（JS对象） ---> 真实的DOM
+React.createElement('div', {}, 'item')
+
+优点： （虚拟DOM）
+1. 性能提升了
+2. 它使得跨端应用得以实现。React Native
+
+
+虚拟 DOM 中的 Diff 算法
+归根结底都是调用setState的时候数据发生了变化，setState是异步的（初衷，底层为了提高性能，如果有多提调用，合并为一次）
+同层比对  不同直接替换，同层比对算法简单，因此比对速度很快
+with keys 极大的提升了DOM比对的性能
+a 0   b 1   c 2 比对没有意义，key值变化，因此要使用一个稳定的内容作为key值
+b 0   c 1
+
+1. setState 可以把多次setState合并为一次执行，减少虚拟DOM比对的次数
+2. 同层比对
+3. 引入key值是为了提高虚拟DOM的性能，key值要保持稳定
+4. 同层比对和key值比对都是diff算法的一部分
