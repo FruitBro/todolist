@@ -183,3 +183,18 @@ b 0   c 1
 2. 同层比对
 3. 引入key值是为了提高虚拟DOM的性能，key值要保持稳定
 4. 同层比对和key值比对都是diff算法的一部分
+
+九、React中ref的使用
+
+ref(reference)引用 使用ref来操作dom，直接获取DOM元素来使用的
+尽量不要用ref。做动画的时候可能要用到。
+一定要把获取DOM放在setState的第二个参数的回调函数中。
+oneOfType
+arrayOf 意味着数据类型为数组
+setState 的第二个参数为异步回调函数
+用e.target获取元素节点，也可以用ref（引用）来获取
+ref={{input} => {this.input = input}}
+this.input相当于input标签的实际元素
+传进来的参数input相当于input标签的实际元素
+
+

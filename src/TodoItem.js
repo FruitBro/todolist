@@ -19,7 +19,7 @@ class TodoItem extends Component {
 // 参数校验
 TodoItem.propTypes = {
   test: PropTypes.string.isRequired,
-  content: PropTypes.arrayOf(PropTypes.string, PropTypes.number), // 可以是字符串或数字
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), // 可以是字符串或数字
   deleteItem: PropTypes.func,
   index: PropTypes.number
 }
