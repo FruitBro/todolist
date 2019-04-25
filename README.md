@@ -173,9 +173,9 @@ React.createElement('div', {}, 'item')
 
 
 虚拟 DOM 中的 Diff 算法
-归根结底都是调用setState的时候数据发生了变化，setState是异步的（初衷，底层为了提高性能，如果有多提调用，合并为一次）
-同层比对  不同直接替换，同层比对算法简单，因此比对速度很快
-with keys 极大的提升了DOM比对的性能
+1. 归根结底都是调用setState的时候数据发生了变化，setState是异步的（初衷，底层为了提高性能，如果有**多次调用，合并为一次，降低虚拟dom的比对频率**）
+2. 同层比对  不同直接替换，同层比对算法简单，因此比对速度很快
+3. with keys 极大的提升了DOM比对的性能
 a 0   b 1   c 2 比对没有意义，key值变化，因此要使用一个稳定的内容作为key值
 b 0   c 1
 
@@ -221,7 +221,7 @@ constructor是ES6带的函数
 
     props
     componentWillReceiveProps
-    shouldComponentUpdate
+    shouldComponentUpdate 可以阻止下面周期函数的执行
     componentWillUpdate
     render
     componentDidUpdate
@@ -229,7 +229,31 @@ constructor是ES6带的函数
 * Unmounting
     componentWillUnmount
 
-React 生命周期函数使用场景
+十一、React 生命周期函数使用场景
 每天过一遍这些生命周期函数
 render 这个生命周期函数必须存在，因为继承自react中Component这个组件，其他生命周期函数都内置了，唯独没有内置render生命周期函数
 
+React调试工具
+Highlisht update 可以查看被render更新的组件
+
+react提升代码性能的点
+1. 使用bind  this.handleClick = this.handleClick.bind(this)
+2. 归根结底都是调用setState的时候数据发生了变化，setState是异步的（初衷，底层为了提高性能，如果有**多次调用，合并为一次，降低虚拟dom的比对频率**）
+3. 同层比对  不同直接替换，同层比对算法简单，因此比对速度很快
+4. with keys 极大的提升了DOM比对的性能
+
+componentDidMount 一般用于请求ajax，最合适
+componentWillMount 请求ajax放在这里也没有问题，但可能还有冲突，在用于React Native或用React做服务端的同构可能会产生冲突
+constructor ajax也行，但不要放，为了规范
+
+axios 读音 埃克谢而思
+借助 shouldComponentUpdate 提升性能
+shouldComponentUpdate (nextProps, nextState) {
+  console.log(nextProps, nextState)
+if (nextProps.content !== this.props.content) {
+    return true
+} else {
+    return false
+}
+
+}

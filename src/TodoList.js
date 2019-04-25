@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import TodoItem from "./TodoItem";
+import axios from "axios"
 import "./style.css";
 class TodoList extends Component {
   constructor(props) {
@@ -12,10 +13,6 @@ class TodoList extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handleItemDelete = this.handleItemDelete.bind(this);
-  }
-
-  componentWillMount () {
-    console.log('componentWillMount')
   }
 
   render() {
@@ -31,33 +28,23 @@ class TodoList extends Component {
             className="input"
             onChange={this.handleInputChange}
             value={this.state.inputValue}
-            ref={(input) => {this.input = input}}
           />
           <button onClick={this.handleBtnClick}>提交</button>
         </div>
-        <ul ref={(ul) => {this.ul = ul}}>
+        <ul>
           {this.getTodoItem()}
         </ul>
       </Fragment>
     );
   }
-  componentDidMount () {
-    console.log('componentDidMount')
-  }
 
-  // 组件被更新之前，它会自动执行 
-  shouldComponentUpdate () {
-    console.log('shouldComponentUpdate')
-    return true
-  }
-  // 组件被更新之前，它会自动执行，但是他在shouldComponentUpdate之后执行
-  // 如果shouldComponentUpdate 返回true就执行，false就不执行
-  componentWillUpdate () {
-    console.log('componentWillUpdate')
-  }
-  // 组件更新完成之后，会执行
-  componentDidUpdate () {
-    console.log('componentDidUpdate')
+  componentDidMount () {
+    axios.get('/api/todolist').then(() => {
+      alert('succ')
+    }).catch(() => {
+      alert('error')
+    })
+
   }
 
   getTodoItem () {
@@ -76,7 +63,7 @@ class TodoList extends Component {
 
   handleInputChange(e) {
     // console.log(e.target)
-    const value = this.input.value
+    const value = e.target.value
     this.setState(() => ({
         inputValue: value
     }))
@@ -87,9 +74,7 @@ class TodoList extends Component {
     this.setState((prevState)=>({
       list: [...prevState.list, prevState.inputValue],
       inputValue: ""
-    }), () => {
-      console.log(this.ul.querySelectorAll('div').length)
-    })
+    }))
     
   }
 
