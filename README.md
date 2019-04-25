@@ -272,3 +272,8 @@ React 中使用 CSS 动画效果
 
 unmountOnExit移除dom
 onEntered={(el) => {el.style.color='blue'}}
+
+使用 TransitionGroup 和 CSSTransition 实现多个DOM元素的动画
+
+为什么说react更适合大型项目
+react没有过度封装，更加灵活，vue的很多语法都是固定的
