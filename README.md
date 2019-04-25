@@ -262,3 +262,13 @@ if (nextProps.content !== this.props.content) {
 charles的 tools --> map local功能
 [...res.data]
 React的 CSS 过渡动画
+
+React 16中提供了 fiber 的 Fragment 占位符
+
+React 中使用 CSS 动画效果
+
+
+十二、使用 react-transition-group 实现动画
+
+unmountOnExit移除dom
+onEntered={(el) => {el.style.color='blue'}}
