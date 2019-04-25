@@ -13,7 +13,13 @@ class TodoList extends Component {
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handleItemDelete = this.handleItemDelete.bind(this);
   }
+
+  componentWillMount () {
+    console.log('componentWillMount')
+  }
+
   render() {
+    console.log('render')
     return (
       <Fragment>
         <div>
@@ -34,6 +40,24 @@ class TodoList extends Component {
         </ul>
       </Fragment>
     );
+  }
+  componentDidMount () {
+    console.log('componentDidMount')
+  }
+
+  // 组件被更新之前，它会自动执行 
+  shouldComponentUpdate () {
+    console.log('shouldComponentUpdate')
+    return true
+  }
+  // 组件被更新之前，它会自动执行，但是他在shouldComponentUpdate之后执行
+  // 如果shouldComponentUpdate 返回true就执行，false就不执行
+  componentWillUpdate () {
+    console.log('componentWillUpdate')
+  }
+  // 组件更新完成之后，会执行
+  componentDidUpdate () {
+    console.log('componentDidUpdate')
   }
 
   getTodoItem () {

@@ -197,4 +197,39 @@ ref={{input} => {this.input = input}}
 this.input相当于input标签的实际元素
 传进来的参数input相当于input标签的实际元素
 
+十、react的生命周期函数
+
+生命周期函数指在某一时刻组件会**自动调用执行**的函数
+
+constructor是ES6带的函数
+
+* Initizlization 初始化
+    constructor
+    setup props and state
+
+* Mounting 挂载
+    componentWillMount 组件即将挂载到页面(只执行一次，只在挂载的时候执行)
+    render
+    componentDidMount 挂载到页面(只执行一次，只在挂载的时候执行)
+* Updation 
+
+    states
+    shouldComponentUpdate 组件更新之前执行,返回boolean值，true就更新，false就不更新
+    componentWillUpdate
+    render
+    componentDidUpdate
+
+    props
+    componentWillReceiveProps
+    shouldComponentUpdate
+    componentWillUpdate
+    render
+    componentDidUpdate
+
+* Unmounting
+    componentWillUnmount
+
+React 生命周期函数使用场景
+每天过一遍这些生命周期函数
+render 这个生命周期函数必须存在，因为继承自react中Component这个组件，其他生命周期函数都内置了，唯独没有内置render生命周期函数
 
