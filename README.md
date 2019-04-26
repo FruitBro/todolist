@@ -277,3 +277,20 @@ onEntered={(el) => {el.style.color='blue'}}
 
 为什么说react更适合大型项目
 react没有过度封装，更加灵活，vue的很多语法都是固定的
+
+十三、Redux
+React本身是一个非常简单的视图层框架
+组件间通信传值非常麻烦
+配套使用数据层框架
+store action reducer component
+Redux = Reducer + Flux
+
+Redux的工作流程（其实非常简单）
+类似于图书馆
+React Component（也面中的组件）类似于借书的人
+Store （数据存储的公共区域）（图书管理员）
+Action Creators 你说的要借书的话
+Reducers （记录本，查询）
+
+component --> action 说--> store 听到 --> reducer 查询
+
