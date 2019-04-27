@@ -6,6 +6,8 @@ const defaultState = {
 }
 
 // reducer 可以接收state,但是绝不能修改state
+// 纯函数：固定输入--》固定输出，而且没有副作用（函数中有setTimeout、ajax、new Date等时，就都不是纯函数了，reducer中不能有这些操作）
+// 副作用：比如对传入参数的修改
 export default (state = defaultState, action) => {
     const newState = JSON.parse(JSON.stringify(state))
     if (action.type === CHANGE_INPUT_VALUE) {

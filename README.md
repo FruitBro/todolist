@@ -314,3 +314,20 @@ store.getState() 需要在获取数据的地方调用，一般赋值给state
 
 十三、ActionTypes 的拆分
 意义：更加规范，易于调试
+
+十四、使用actionCreator 统一创建 action
+
+action分散在各个组件中，不利于管理
+actionCreator 提高代码的可维护性
+
+Redux 知识点复习补充
+Redux 设计和使用的三项原则
+1. store必须是唯一的
+2. 只有 store 能够改变自己的内容
+3. Reducer 必须是纯函数
+
+Redux 的核心API
+createStore
+store.dispatch
+store.getState
+store.subscribe
