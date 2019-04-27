@@ -428,3 +428,5 @@ react-redux提供的第一个核心API： Provider
 Provider: 提供器连接了store，那么Provider里面的所有组件都有能力获取到store里的内容(提供器)
 connect: 通过connect获取到里面的数据，关联，重点理解connect中的两个参数
 写5遍，其实都是一个套路
+
+使用 React-redux 完成TodoList 功能
