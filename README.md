@@ -415,7 +415,7 @@ Redux-saga可以完全代替redux-thunk
 redux-saga比redux-thunk复杂的多
 
 redux-saga,有非常多的api,将异步的代码完全拆分到一个文件中，单独进行管理，在处理非常大型的项目时优于redux-thunk
-redux-thunk基本没有api,只是在action里返回的不仅仅可以是对象，还可以是一个函数，就这么简单
+redux-thunk基本没有api,只是在action里返回的不仅仅可以是对象，还可以是一个函数，就这么简单（判断的标准为是不是一个函数）
 
 ---------------
 十九、如何使用 React-redux（非常重要）
@@ -429,4 +429,4 @@ Provider: 提供器连接了store，那么Provider里面的所有组件都有能
 connect: 通过connect获取到里面的数据，关联，重点理解connect中的两个参数
 写5遍，其实都是一个套路
 
-使用 React-redux 完成TodoList 功能
+使用 React-redux 完成 TodoList 功能
