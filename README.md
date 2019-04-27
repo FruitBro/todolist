@@ -310,5 +310,7 @@ store.subscribe 注册一个监听对象，监听数据的变化
 store.getState() 需要在获取数据的地方调用，一般赋值给state
 之后完全按照这个套路实现就可以了
 
-十三、使用 Redux 完成 TodoList 删除功能
+使用 Redux 完成 TodoList 删除功能
 
+十三、ActionTypes 的拆分
+意义：更加规范，易于调试
