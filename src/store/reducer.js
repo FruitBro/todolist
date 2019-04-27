@@ -1,4 +1,4 @@
-import { CHANGE_INPUT_VALUE, ADD_TOTO_ITEM, DELETE_TODO_ITEM} from './actionTypes'
+import { CHANGE_INPUT_VALUE, ADD_TOTO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION} from './actionTypes'
 // state 对应的就是整个store存储的数据。也就是整个图书馆的借阅信息
 const defaultState = {
     inputValue: '',
@@ -20,10 +20,13 @@ export default (state = defaultState, action) => {
         newState.inputValue = ''
         return newState
     }
-    if (action.type = DELETE_TODO_ITEM) {
+    if (action.type === DELETE_TODO_ITEM) {
        newState.list.splice(action.index, 1)
        return newState
     }
-    console.log(state, action)
+    if (action.type === INIT_LIST_ACTION) {
+        newState.list = action.data
+        return newState
+    }
     return state
 }

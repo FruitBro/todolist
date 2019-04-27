@@ -67,16 +67,18 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+---------------
 React ：英文原意（响应）
 
-React 中的响应式设计思想和事件绑定
-
+一、React 中的响应式设计思想和事件绑定
+-
 思路：
     1.输入框的值
     2，list的值 push
     3. map list中的值
 
-二、
+---------------
+二、注释
 
 注释的写法
  {/* 下面是一个input框 */}
@@ -89,15 +91,17 @@ React 中的响应式设计思想和事件绑定
    <input id="insertArea"/>
  html中label的作用一般是扩大点击区域，与input的id进行绑定，label要用htmlFor,防止与for循环冲突
 
+---------------
  三、 拆分组件与组件之间的传值(重点)
-
+-
  父组件向子组件传值： 通过属性的形式，既可以传递数据，也可以传递方法
  子组件接收父组件的值：props
  子组件调用父组件方法改变父组件的数据：this.props.deleteItem，deleteItem函数一定要绑定this,对父组件的数据进行改变
  子组件操作父组件的数据：1.从父组件向子组件传递一个方法 2.子组件去调用这个方法，间接操作父组件的数据，从而实现子组件和父组件的通信
  
+---------------
  四、TodoList代码优化
-
+-
 this.setState((prevState) => {
     const list = [...prevState.list]
     list.splice(index, 1)
@@ -105,8 +109,9 @@ this.setState((prevState) => {
 })
 setState可以传入回调函数，prevState代表this.state修改之前的数据
 
+---------------
 五、围绕React衍生出的思考
-
+-
 1. 声名式开发方式：（减少大量dom操作的代码量） 可以理解为图纸，react会自动结合图纸构建dom，帮我们节约了大量dom操作代码
 你只要把数据构建好就可以了，react会根据你的数据自动构建网站
 
@@ -122,21 +127,24 @@ setState可以传入回调函数，prevState代表this.state修改之前的数�
 
 6. 函数式编程：写的都是一个个函数，维护起来比较容易。面向测试的开发流程，输入值看输出是否符合预期，给测试带来非常大的便捷性,更容易前端自动化测试。
 
+---------------
 六、PropTypes与DefalutProps的应用
-
+-
 参数类型做校验 定义参数默认值
 
 React最佳学习方式：读英文文档 https://reactjs.org/docs/typechecking-with-proptypes.html
 
+---------------
 七、props,state与render函数的关系
-
+-
 当组件的state或者props发生改变的时候，render函数就会重新执行
 当父组件的render函数被运行时，他的自附件的render都将被重新运行一次
 1.复杂页面，数据变更导致频繁的render，是否占用太多资源？2.如何控制数据变更后的render时机？
 当使用immutable，并且配合pureComponent时，数据不变，render就不会执行
 
+---------------
 八、React中的虚拟DOM
-
+-
 1. state 数据
 2. JSX 模板
 3. 数据 + 模板 结合，生成真实的DOM，并显示
@@ -184,8 +192,9 @@ b 0   c 1
 3. 引入key值是为了提高虚拟DOM的性能，key值要保持稳定
 4. 同层比对和key值比对都是diff算法的一部分
 
+---------------
 九、React中ref的使用
-
+-
 ref(reference)引用 使用ref来操作dom，直接获取DOM元素来使用的
 尽量不要用ref。做动画的时候可能要用到。
 一定要把获取DOM放在setState的第二个参数的回调函数中。
@@ -197,8 +206,9 @@ ref={{input} => {this.input = input}}
 this.input相当于input标签的实际元素
 传进来的参数input相当于input标签的实际元素
 
+---------------
 十、react的生命周期函数
-
+-
 生命周期函数指在某一时刻组件会**自动调用执行**的函数
 
 constructor是ES6带的函数
@@ -229,7 +239,9 @@ constructor是ES6带的函数
 * Unmounting
     componentWillUnmount
 
+---------------
 十一、React 生命周期函数使用场景
+-
 每天过一遍这些生命周期函数
 render 这个生命周期函数必须存在，因为继承自react中Component这个组件，其他生命周期函数都内置了，唯独没有内置render生命周期函数
 
@@ -268,8 +280,9 @@ React 16中提供了 fiber 的 Fragment 占位符
 React 中使用 CSS 动画效果
 
 
+---------------
 十二、使用 react-transition-group 实现动画
-
+-
 unmountOnExit移除dom
 onEntered={(el) => {el.style.color='blue'}}
 
@@ -278,7 +291,9 @@ onEntered={(el) => {el.style.color='blue'}}
 为什么说react更适合大型项目
 react没有过度封装，更加灵活，vue的很多语法都是固定的
 
+---------------
 十三、Redux
+-
 React本身是一个非常简单的视图层框架
 组件间通信传值非常麻烦
 配套使用数据层框架
@@ -312,11 +327,14 @@ store.getState() 需要在获取数据的地方调用，一般赋值给state
 
 使用 Redux 完成 TodoList 删除功能
 
+---------------
 十三、ActionTypes 的拆分
+-
 意义：更加规范，易于调试
 
+---------------
 十四、使用actionCreator 统一创建 action
-
+-
 action分散在各个组件中，不利于管理
 actionCreator 提高代码的可维护性
 
@@ -342,4 +360,8 @@ UI组件来负责渲染，容器组件负责逻辑
 无状态组件:实际上就是一个函数，无状态性能更高
 普通组件中类，生命周期函数，render 执行的函数远比无状态组件这个函数要多，因此性能要差很多
 无状态组件一般用于：定义UI组件的时候，没有任何逻辑操作的时候
+
+---------------
+十六、Redux中发送异步请求获取数据
+-
 

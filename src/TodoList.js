@@ -2,8 +2,17 @@ import React, { Component } from 'react'
 import 'antd/dist/antd.css'
 
 import store from './store/index'
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators'
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction, initListAction } from './store/actionCreators'
 import TodoListUI from './TodoListUI'
+import axios from 'axios'
+import mockAdapter from 'axios-mock-adapter'
+const mock = new mockAdapter(axios)
+mock.onGet('/list.json').reply(200, {
+    data: [
+        "1",
+        "hello"
+    ]
+})
 
 class Todolist extends Component {
     constructor (props) {
@@ -27,6 +36,15 @@ class Todolist extends Component {
           handleSubmit={this.handleSubmit}
           handleItemDelete={this.handleItemDelete} />
         )
+    }
+
+    componentDidMount () {
+        axios.get('/list.json').then((res) => {
+            const data = res.data.data
+            const action = initListAction(data)
+            store.dispatch(action)
+            console.log('res', data)
+        }).catch()
     }
 
     handleInputChange (e) {
