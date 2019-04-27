@@ -295,3 +295,20 @@ Reducers （记录本，查询）
 component --> action 说--> store 听到 --> reducer 查询
 
 之前的逐级传递特别麻烦，效率低下，OK，现在有人说，我们建一个图书馆吧！把所有的图书由图书馆统一管理，这样就不用来回一级一级的询问了。思想都是相通的。
+
+
+如何创建store（createStore(reducer)），如何使用store，如何在component中获取数据reducer
+reducer必须是一个函数，传入两个参数state、action
+
+redux 调试 https://github.com/zalmoxisus/redux-devtools-extension#usage
+
+action 与 reducer
+store.dispatch(action) 把要出发的指令告诉store
+store
+recucer (做相应的数据处理，然后再返回给store)
+store.subscribe 注册一个监听对象，监听数据的变化
+store.getState() 需要在获取数据的地方调用，一般赋值给state
+之后完全按照这个套路实现就可以了
+
+十三、使用 Redux 完成 TodoList 删除功能
+
