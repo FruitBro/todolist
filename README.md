@@ -377,4 +377,19 @@ Redux-thunk可以使我们将这些复杂的逻辑放入action中进行处理
 4. 此时store.dispath(action)传入了action函数，自动执行action函数，这样就获取到了异步数据
 5. 获取的异步数据，然后改变store中的数据： 先创建一个新的action，再调用dispatch方法。相当于包装了一层。
 这样就把复杂的业务逻辑，或异步函数拆分到actionCreator中进行管理
+写五遍，足以应付复杂的开发业务
 
+---------------
+十七、什么是Redux的中间件
+-
+要清楚redux-thunk和redux-saga的使用流程
+
+redux-thunk中间件可以帮助我们在action中使用函数
+中间：指的是action和store之间，其实就是dispatch方法
+中间件实际上就是对disaptch方法的封装
+原始的情况是直接传递对象
+传递函数会让函数先执行，然后再执行传递action
+
+中间件非常多：如
+redux-logger： 记录action每一次派发的日志
+redux-saga： 单独把异步的逻辑拆分到一个单独的文件中进行管理
