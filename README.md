@@ -364,4 +364,17 @@ UI组件来负责渲染，容器组件负责逻辑
 ---------------
 十六、Redux中发送异步请求获取数据
 -
+其实就是在ajax获取到数据之后重新赋值数据
+Redux-thunk是redux的中间件
+使用 Redux-thunk 中间件实现ajax数据请求
+ajax写在componentDidMount中，咋一看没什么问题，但是当业务逻辑比较多的时候就会显得比较臃肿。
+因此像ajax这种异步的请求就可以移动到其他地方进行统一管理
+Redux-thunk可以使我们将这些复杂的逻辑放入action中进行处理
+步骤
+1. 安装Redux-Thunk
+2. 创建store时使用thunk中间件，这样就可以在组件中写异步代码了
+3. thunk使得我们可以在aciton中写异步代码了，action之前只能是一个对象，现在可以是函数了
+4. 此时store.dispath(action)传入了action函数，自动执行action函数，这样就获取到了异步数据
+5. 获取的异步数据，然后改变store中的数据： 先创建一个新的action，再调用dispatch方法。相当于包装了一层。
+这样就把复杂的业务逻辑，或异步函数拆分到actionCreator中进行管理
 
