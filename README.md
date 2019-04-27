@@ -271,7 +271,10 @@ if (nextProps.content !== this.props.content) {
 }
 
 使用 Charles 进行接口数据模拟mock
+
 charles的 tools --> map local功能
+switchOmega要改为 **系统代理** 模式
+
 [...res.data]
 React的 CSS 过渡动画
 
@@ -390,6 +393,27 @@ redux-thunk中间件可以帮助我们在action中使用函数
 原始的情况是直接传递对象
 传递函数会让函数先执行，然后再执行传递action
 
+有助于我们做自动化的测试和代码的拆分管理
+
 中间件非常多：如
 redux-logger： 记录action每一次派发的日志
 redux-saga： 单独把异步的逻辑拆分到一个单独的文件中进行管理
+
+---------------
+十八、Redux-saga中间件
+-
+中间：指的是action和store的中间
+Redux-saga可以完全代替redux-thunk
+
+在Redux-saga中异步逻辑会放到一个单独的文件中去管理
+
+看官方文件进行相关配置 https://github.com/redux-saga/redux-saga
+1. 在store的index.js中引入 createSagaMiddleware，然后创建sagaMiddleware,再通过applyMiddleware使用这个中间件
+2. 创建sagas文件，运行这个文件 sagaMiddleware.run(todoSages)
+3. sagas文件中创建generator函数
+
+redux-saga比redux-thunk复杂的多
+
+redux-saga,有非常多的api,将异步的代码完全拆分到一个文件中，单独进行管理，在处理非常大型的项目时优于redux-thunk
+redux-thunk基本没有api,只是在action里返回的不仅仅可以是对象，还可以是一个函数，就这么简单
+
