@@ -389,7 +389,7 @@ Redux-thunk可以使我们将这些复杂的逻辑放入action中进行处理
 
 redux-thunk中间件可以帮助我们在action中使用函数
 中间：指的是action和store之间，其实就是dispatch方法
-中间件实际上就是对disaptch方法的封装
+中间件实际上就是对disaptch方法的封装,也就是对dispatch的升级
 原始的情况是直接传递对象
 传递函数会让函数先执行，然后再执行传递action
 
@@ -417,3 +417,14 @@ redux-saga比redux-thunk复杂的多
 redux-saga,有非常多的api,将异步的代码完全拆分到一个文件中，单独进行管理，在处理非常大型的项目时优于redux-thunk
 redux-thunk基本没有api,只是在action里返回的不仅仅可以是对象，还可以是一个函数，就这么简单
 
+---------------
+十九、如何使用 React-redux（非常重要）
+-
+React-redux是什么？是一个第三方的模块，可以帮助我们在react之中更加方便的使用redux
+
+reducer是一个纯函数
+
+react-redux提供的第一个核心API： Provider
+Provider: 提供器连接了store，那么Provider里面的所有组件都有能力获取到store里的内容(提供器)
+connect: 通过connect获取到里面的数据，关联，重点理解connect中的两个参数
+写5遍，其实都是一个套路
